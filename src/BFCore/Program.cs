@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BFCore
+﻿namespace BFCore
 {
     class Program
     {
