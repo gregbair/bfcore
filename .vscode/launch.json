@@ -9,7 +9,7 @@
             "program": "${workspaceRoot}\\src\\BFCore\\bin\\Debug\\netcoreapp1.1\\BFCore.dll",
             "args": [],
             "cwd": "${workspaceRoot}\\src\\BFCore",
-            "console": "internalConsole",
+            "console": "externalTerminal",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
         },
