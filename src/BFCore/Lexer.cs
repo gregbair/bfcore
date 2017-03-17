@@ -1,5 +1,3 @@
-using System;
-
 namespace BFCore
 {
     public class Lexer

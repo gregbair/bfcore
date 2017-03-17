@@ -12,7 +12,7 @@ namespace BFCore
     public abstract class Statement : Node { }
     public abstract class Expression : Node { }
 
-    public class ProgramNode
+    public class ProgramNode : Node
     {
         public List<Statement> Statements { get; set; }
 
@@ -95,5 +95,18 @@ namespace BFCore
     public class LoopExpression : Expression
     {
         public List<Statement> Statements { get; set; } = new List<Statement>();
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Loop -");
+
+            foreach (var s in Statements)
+            {
+                sb.AppendLine("\t" + s.ToString());
+            }
+
+            return sb.ToString();
+        }
     }
 }

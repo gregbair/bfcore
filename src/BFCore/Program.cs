@@ -6,7 +6,7 @@ namespace BFCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Repl.Start();
         }
     }
 }
