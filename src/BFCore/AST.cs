@@ -10,7 +10,6 @@ namespace BFCore
     }
 
     public abstract class Statement : Node { }
-    public abstract class Expression : Node { }
 
     public class ProgramNode : Node
     {
@@ -85,14 +84,7 @@ namespace BFCore
         public override string ToString() => $"Output - ({TokenLiteral()})";
     }
 
-    public class ExpressionStatement : Statement
-    {
-        public Expression Expression { get; set; }
-
-        public override string ToString() => Expression?.ToString() ?? "";
-    }
-
-    public class LoopExpression : Expression
+    public class Loop : Statement
     {
         public List<Statement> Statements { get; set; } = new List<Statement>();
 

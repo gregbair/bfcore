@@ -21,8 +21,7 @@ namespace BFCore
                 TypeSwitch.Case<ProgramNode>(() => evalProgram((ProgramNode)node, env)),
                 TypeSwitch.Case<ManipulationStatement>(() => evalManipulation((ManipulationStatement)node, env)),
                 TypeSwitch.Case<PointerStatement>(() => evalPointer((PointerStatement)node, env)),
-                TypeSwitch.Case<ExpressionStatement>(() => Eval(((ExpressionStatement)node).Expression, env)),
-                TypeSwitch.Case<LoopExpression>(() => evalLoop((LoopExpression)node, env)),
+                TypeSwitch.Case<Loop>(() => evalLoop((Loop)node, env)),
                 TypeSwitch.Case<OutputStatment>(() => evalOutputStatement((OutputStatment)node, env)),
                 TypeSwitch.Case<InputStatement>(() => evalInputStatement((InputStatement)node, env))
             );
@@ -52,7 +51,7 @@ namespace BFCore
             Console.Write((char)env.State[pos]);
         }
 
-        private static void evalLoop(LoopExpression loop, Environment env)
+        private static void evalLoop(Loop loop, Environment env)
         {
             int counterPos = env.Position;
             while (env.State[counterPos] > 0)

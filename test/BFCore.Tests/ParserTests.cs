@@ -58,11 +58,8 @@ namespace BFCore.Tests
 
             Assert.Equal(3, prog.Statements.Count);
 
-            Assert.IsType<ExpressionStatement>(prog.Statements[0]);
-            var exp = (ExpressionStatement)prog.Statements[0];
-
-            Assert.IsType<LoopExpression>(exp.Expression);
-            var loop = (LoopExpression)exp.Expression;
+            Assert.IsType<Loop>(prog.Statements[0]);
+            var loop = (Loop)prog.Statements[0];
 
             for (int i = 0; i < 4; i++)
             {
