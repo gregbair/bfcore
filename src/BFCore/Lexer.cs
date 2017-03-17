@@ -17,7 +17,7 @@ namespace BFCore
 
         private void readChar()
         {
-            _ch = _readPosition >= _input.Length ? '\0' : _input[_readPosition];
+            _ch = _readPosition >= _input.Length ? Token.EOFChar : _input[_readPosition];
 
             _position = _readPosition;
             _readPosition++;
@@ -37,10 +37,10 @@ namespace BFCore
             skipWhiteSpace();
 
             TokenType tt = Token.GetTokenTypeForChar(_ch);
-
+            char c = _ch;
             readChar();
 
-            return new Token(tt);
+            return new Token(tt, c);
         }
     }
 }
