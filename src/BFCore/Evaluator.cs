@@ -11,7 +11,7 @@ namespace BFCore
         public int[] State { get { return _state; } }
         public int Position { get { return _curPos; } set { _curPos = value; } }
     }
-    public static partial class Evaluator
+    public static class Evaluator
     {
         public static Environment Eval(Node node, Environment env = null)
         {

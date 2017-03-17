@@ -20,5 +20,10 @@ namespace BFCore
                 Console.WriteLine();
             }
         }
+
+        public static void Start(string input)
+        {
+            Evaluator.Eval(new Parser(new Lexer(input)).ParseProgram());
+        }
     }
 }
