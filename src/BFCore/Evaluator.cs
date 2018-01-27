@@ -19,29 +19,29 @@ namespace BFCore
             switch (node)
             {
                 case ProgramNode pn:
-                    evalProgram(pn, env);
+                    EvalProgram(pn, env);
                     break;
                 case ManipulationStatement ms:
-                    evalManipulation(ms, env);
+                    EvalManipulation(ms, env);
                     break;
                 case PointerStatement ps:
-                    evalPointer(ps, env);
+                    EvalPointer(ps, env);
                     break;
                 case Loop l:
-                    evalLoop(l, env);
+                    EvalLoop(l, env);
                     break;
                 case OutputStatment os:
-                    evalOutputStatement(os, env);
+                    EvalOutputStatement(os, env);
                     break;
                 case InputStatement iStatement:
-                    evalInputStatement(iStatement, env);
+                    EvalInputStatement(iStatement, env);
                     break;
             }
 
             return env;
         }
 
-        private static void evalInputStatement(InputStatement node, Environment env)
+        private static void EvalInputStatement(InputStatement node, Environment env)
         {
             Console.Write($"Enter character followed by <RET> to insert at position {env.Position}: ");
             string input = Console.ReadLine();
@@ -53,17 +53,17 @@ namespace BFCore
             else
             {
                 Console.WriteLine("Not a valid character. Try again.");
-                evalInputStatement(node, env);
+                EvalInputStatement(node, env);
             }
         }
-        private static void evalOutputStatement(OutputStatment node, Environment env)
+        private static void EvalOutputStatement(OutputStatment node, Environment env)
         {
             int pos = env.Position;
 
             Console.Write((char)env.State[pos]);
         }
 
-        private static void evalLoop(Loop loop, Environment env)
+        private static void EvalLoop(Loop loop, Environment env)
         {
             int counterPos = env.Position;
             while (env.State[counterPos] > 0)
@@ -75,7 +75,7 @@ namespace BFCore
             }
         }
 
-        private static void evalProgram(ProgramNode prog, Environment env)
+        private static void EvalProgram(ProgramNode prog, Environment env)
         {
             foreach (var statement in prog.Statements)
             {
@@ -83,7 +83,7 @@ namespace BFCore
             }
         }
 
-        private static void evalPointer(PointerStatement statement, Environment env)
+        private static void EvalPointer(PointerStatement statement, Environment env)
         {
             switch (statement.Direction)
             {
@@ -97,7 +97,7 @@ namespace BFCore
 
         }
 
-        private static void evalManipulation(ManipulationStatement statement, Environment env)
+        private static void EvalManipulation(ManipulationStatement statement, Environment env)
         {
             switch (statement.Direction)
             {

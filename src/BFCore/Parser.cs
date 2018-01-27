@@ -13,11 +13,11 @@ namespace BFCore
         {
             this._lexer = l;
             // read two tokens, so _curToken and _peekToken are both set.
-            nextToken();
-            nextToken();
+            NextToken();
+            NextToken();
         }
 
-        private void nextToken()
+        private void NextToken()
         {
             _curToken = _peekToken;
             _peekToken = _lexer.NextToken();
@@ -31,18 +31,18 @@ namespace BFCore
 
             while (_curToken.Type != TokenType.EOF)
             {
-                var stmt = parseStatement();
+                var stmt = ParseStatement();
                 if (stmt != null)
                 {
                     program.Statements.Add(stmt);
                 }
-                nextToken();
+                NextToken();
             }
 
             return program;
         }
 
-        private Statement parseStatement()
+        private Statement ParseStatement()
         {
             switch (_curToken.Type)
             {
@@ -69,15 +69,15 @@ namespace BFCore
 
         }
 
-        private Loop parseLoop()
+        private Loop ParseLoop()
         {
             Loop loop = new Loop();
             loop.Token = _curToken;
-            nextToken();
+            NextToken();
             while (_curToken.Type != TokenType.RBracket)
             {
-                loop.Statements.Add(parseStatement());
-                nextToken();
+                loop.Statements.Add(ParseStatement());
+                NextToken();
             }
             return loop;
         }

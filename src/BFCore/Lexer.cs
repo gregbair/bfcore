@@ -10,10 +10,10 @@ namespace BFCore
         public Lexer(string input)
         {
             _input = input;
-            readChar();
+            ReadChar();
         }
 
-        private void readChar()
+        private void ReadChar()
         {
             _ch = _readPosition >= _input.Length ? Token.EOFChar : _input[_readPosition];
 
@@ -21,22 +21,22 @@ namespace BFCore
             _readPosition++;
         }
 
-        private void skipWhiteSpace()
+        private void SkipWhiteSpace()
         {
             while (Token.GetTokenTypeForChar(_ch) == TokenType.None)
             {
-                readChar();
+                ReadChar();
             }
         }
 
         public Token NextToken()
         {
 
-            skipWhiteSpace();
+            SkipWhiteSpace();
 
             TokenType tt = Token.GetTokenTypeForChar(_ch);
             char c = _ch;
-            readChar();
+            ReadChar();
 
             return new Token(tt, c);
         }
