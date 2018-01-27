@@ -16,15 +16,27 @@ namespace BFCore
         public static Environment Eval(Node node, Environment env = null)
         {
             if (env == null) env = new Environment();
-            TypeSwitch.Do(
-                node,
-                TypeSwitch.Case<ProgramNode>(() => evalProgram((ProgramNode)node, env)),
-                TypeSwitch.Case<ManipulationStatement>(() => evalManipulation((ManipulationStatement)node, env)),
-                TypeSwitch.Case<PointerStatement>(() => evalPointer((PointerStatement)node, env)),
-                TypeSwitch.Case<Loop>(() => evalLoop((Loop)node, env)),
-                TypeSwitch.Case<OutputStatment>(() => evalOutputStatement((OutputStatment)node, env)),
-                TypeSwitch.Case<InputStatement>(() => evalInputStatement((InputStatement)node, env))
-            );
+            switch (node)
+            {
+                case ProgramNode pn:
+                    evalProgram(pn, env);
+                    break;
+                case ManipulationStatement ms:
+                    evalManipulation(ms, env);
+                    break;
+                case PointerStatement ps:
+                    evalPointer(ps, env);
+                    break;
+                case Loop l:
+                    evalLoop(l, env);
+                    break;
+                case OutputStatment os:
+                    evalOutputStatement(os, env);
+                    break;
+                case InputStatement iStatement:
+                    evalInputStatement(iStatement, env);
+                    break;
+            }
 
             return env;
         }
