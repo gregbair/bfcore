@@ -55,7 +55,7 @@ namespace BFCore
                 case TokenType.Minus:
                     return new ManipulationStatement(_curToken, ManipulationDirection.Minus);
                 case TokenType.LBracket:
-                    return parseLoop();
+                    return ParseLoop();
                 case TokenType.RBracket:
                     // We should never get this. Taken care of by case above.
                     throw new InvalidOperationException("Encounterd LBracket");
